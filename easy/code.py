@@ -188,3 +188,15 @@ print("searchInsert([1,3,5,6], 5)? ", searchInsert([1,3,5,6], 5))
 print("searchInsert([1,3,5,6], 2)? ", searchInsert([1,3,5,6], 2))
 print("searchInsert([1,3,5,6], 7)? ", searchInsert([1,3,5,6], 7))
 print("searchInsert([1,3,5,6], 0)? ", searchInsert([1,3,5,6], 0))
+
+
+def lengthOfLastWord(s: str) -> int:
+    s = s.rstrip()
+    words = s.split(" ")
+    return len(words[-1])
+
+
+print("Problem #10 - lengthOfLastWord?")
+print("lengthOfLastWord('Hello World')? ", lengthOfLastWord("Hello World"))
+print("lengthOfLastWord('   fly me   to   the moon  ')? ", lengthOfLastWord("   fly me   to   the moon  "))
+print("lengthOfLastWord('luffy is still joyboy')? ", lengthOfLastWord("luffy is still joyboy"))
