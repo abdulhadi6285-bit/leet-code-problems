@@ -147,3 +147,20 @@ nums2 = [0, 1, 2, 2, 3, 0, 4, 2]
 val2 = 2
 k2 = removeElement(nums2, val2)
 print(f"removeElement([0,1,2,2,3,0,4,2], 2)? -> k = {k2}, nums = {nums2[:k2]}")
+
+
+def strStr(haystack: str, needle: str) -> int:
+    if not needle:
+        return 0
+
+    for i in range(len(haystack) - len(needle) + 1):
+        if haystack[i:i+len(needle)] == needle:
+            return i
+    return -1
+
+
+print("Problem #8 - Find the Index of the First Occurrence in a String")
+print("strStr('sadbutsad', 'sad')? ", strStr("sadbutsad", "sad"))
+print("strStr('leetcode', 'leeto')? ", strStr("leetcode", "leeto"))
+print("strStr('hello', 'll')? ", strStr("hello", "ll"))
+print("strStr('aaaaa', 'bba')? ", strStr("aaaaa", "bba"))
