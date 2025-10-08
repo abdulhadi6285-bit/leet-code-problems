@@ -219,3 +219,22 @@ print("plusOne([1, 2, 3])? ", plusOne([1, 2, 3]))
 print("plusOne([4, 3, 2, 1])? ", plusOne([4, 3, 2, 1]))
 print("plusOne([9])? ", plusOne([9]))
 print("plusOne([9, 9, 9])? ", plusOne([9, 9, 9]))
+
+def addBinary(a: str, b: str) -> str:
+    binary_str1 = a
+    binary_str2 = b
+
+    int1 = int(binary_str1, 2)
+    int2 = int(binary_str2, 2)
+
+    sum_result = int1 + int2
+    binary_sum = bin(sum_result)
+    binary_sum_clean = binary_sum[2:]
+    return binary_sum_clean
+
+
+print("Problem #12 - addBinary?")
+print("addBinary('11', '1')? ", addBinary('11', '1'))
+print("addBinary('1010', '1011')? ", addBinary('1010', '1011'))
+print("addBinary('0', '0')? ", addBinary('0', '0'))
+print("addBinary('111', '1')? ", addBinary('111', '1'))
