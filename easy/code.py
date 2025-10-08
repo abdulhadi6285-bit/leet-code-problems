@@ -200,3 +200,22 @@ print("Problem #10 - lengthOfLastWord?")
 print("lengthOfLastWord('Hello World')? ", lengthOfLastWord("Hello World"))
 print("lengthOfLastWord('   fly me   to   the moon  ')? ", lengthOfLastWord("   fly me   to   the moon  "))
 print("lengthOfLastWord('luffy is still joyboy')? ", lengthOfLastWord("luffy is still joyboy"))
+
+
+def plusOne(digits: list[int]) -> list[int]:
+    n = len(digits)
+    
+    for i in range(n - 1, -1, -1):
+        if digits[i] < 9:
+            digits[i] += 1
+            return digits
+        digits[i] = 0 
+    
+    return [1] + digits
+
+
+print("Problem #11 - plusOne?")
+print("plusOne([1, 2, 3])? ", plusOne([1, 2, 3]))
+print("plusOne([4, 3, 2, 1])? ", plusOne([4, 3, 2, 1]))
+print("plusOne([9])? ", plusOne([9]))
+print("plusOne([9, 9, 9])? ", plusOne([9, 9, 9]))
