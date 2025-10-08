@@ -77,3 +77,26 @@ def longestCommonPrefix(strs: List[str]) -> str:
 print("Problem #4 - longestCommonPrefix?")
 print("longestCommonPrefix(['flower', 'flow', 'flight'])? ", longestCommonPrefix(['flower', 'flow', 'flight']))
 print("longestCommonPrefix(['dog', 'racecar', 'car'])? ", longestCommonPrefix(['dog', 'racecar', 'car']))
+
+
+def isValid(s: str) -> bool:
+    stack = []
+    mapping = {')': '(', '}': '{', ']': '['}
+    
+    for char in s:
+        if char in mapping:
+            top = stack.pop() if stack else '#'
+            if mapping[char] != top:
+                return False
+        else:
+            stack.append(char)
+    
+    return not stack
+
+
+print("Problem #5 - isValid?")
+print("isValid('()')? ", isValid("()"))
+print("isValid('()[]{}')? ", isValid("()[]{}"))
+print("isValid('(]')? ", isValid("(]"))
+print("isValid('([)]')? ", isValid("([)]"))
+print("isValid('{[]}')? ", isValid("{[]}"))
