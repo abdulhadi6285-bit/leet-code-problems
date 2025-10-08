@@ -124,3 +124,26 @@ print("removeDuplicates([1,1,2])? -> k =", k1, ", nums =", nums1[:k1])
 nums2 = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
 k2 = removeDuplicates(nums2)
 print("removeDuplicates([0,0,1,1,1,2,2,3,3,4])? -> k =", k2, ", nums =", nums2[:k2])
+
+
+
+
+def removeElement(nums: List[int], val: int) -> int:
+    k = 0  
+    for i in range(len(nums)):
+        if nums[i] != val:
+            nums[k] = nums[i]
+            k += 1
+    return k
+
+
+print("Problem #7 - removeElement?")
+nums1 = [3, 2, 2, 3]
+val1 = 3
+k1 = removeElement(nums1, val1)
+print(f"removeElement([3,2,2,3], 3)? -> k = {k1}, nums = {nums1[:k1]}")
+
+nums2 = [0, 1, 2, 2, 3, 0, 4, 2]
+val2 = 2
+k2 = removeElement(nums2, val2)
+print(f"removeElement([0,1,2,2,3,0,4,2], 2)? -> k = {k2}, nums = {nums2[:k2]}")
