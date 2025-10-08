@@ -116,7 +116,7 @@ def removeDuplicates(nums: List[int]) -> int:
     return i + 1
 
 
-print("Problem #7 - removeDuplicates?")
+print("Problem #6 - removeDuplicates?")
 nums1 = [1, 1, 2]
 k1 = removeDuplicates(nums1)
 print("removeDuplicates([1,1,2])? -> k =", k1, ", nums =", nums1[:k1])
