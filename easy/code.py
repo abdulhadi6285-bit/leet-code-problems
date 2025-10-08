@@ -94,9 +94,33 @@ def isValid(s: str) -> bool:
     return not stack
 
 
-print("Problem #5 - isValid?")
+print("Problem #5 - isValidParenthesis?")
 print("isValid('()')? ", isValid("()"))
 print("isValid('()[]{}')? ", isValid("()[]{}"))
 print("isValid('(]')? ", isValid("(]"))
 print("isValid('([)]')? ", isValid("([)]"))
 print("isValid('{[]}')? ", isValid("{[]}"))
+
+
+
+def removeDuplicates(nums: List[int]) -> int:
+    if not nums:
+        return 0
+
+    i = 0
+    for j in range(1, len(nums)):
+        if nums[j] != nums[i]:
+            i += 1
+            nums[i] = nums[j]
+
+    return i + 1
+
+
+print("Problem #7 - removeDuplicates?")
+nums1 = [1, 1, 2]
+k1 = removeDuplicates(nums1)
+print("removeDuplicates([1,1,2])? -> k =", k1, ", nums =", nums1[:k1])
+
+nums2 = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
+k2 = removeDuplicates(nums2)
+print("removeDuplicates([0,0,1,1,1,2,2,3,3,4])? -> k =", k2, ", nums =", nums2[:k2])
