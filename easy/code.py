@@ -263,3 +263,20 @@ print("mySqrt(8)? ", mySqrt(8))
 print("mySqrt(0)? ", mySqrt(0))
 print("mySqrt(1)? ", mySqrt(1))
 print("mySqrt(25)? ", mySqrt(25))
+
+
+def climbStairs(n: int) -> int:
+    if n <= 2:
+        return n
+
+    first, second = 1, 2
+    for _ in range(3, n + 1):
+        first, second = second, first + second
+    return second
+
+
+print("Problem #15 - climbStairs?")
+print("climbStairs(2)? ", climbStairs(2))
+print("climbStairs(3)? ", climbStairs(3))
+print("climbStairs(5)? ", climbStairs(5))
+print("climbStairs(10)? ", climbStairs(10))
