@@ -27,3 +27,31 @@ def isPalindrome(x: int) -> bool:
 print("Problem #2 - isPalindrom?")
 print("isPalindrome(121)? ", isPalindrome(121))
 print("isPalindrome(223)? ", isPalindrome(223))
+
+def romanToInt(s: str) -> int:
+    roman_map = {
+        'I': 1,
+        'V': 5,
+        'X': 10,
+        'L': 50,
+        'C': 100,
+        'D': 500,
+        'M': 1000
+    }
+    
+    total = 0
+    n = len(s)
+    
+    for i in range(n):
+        if i + 1 < n and roman_map[s[i]] < roman_map[s[i + 1]]:
+            total -= roman_map[s[i]]
+        else:
+            total += roman_map[s[i]]
+    
+    return total
+
+
+print("Problem #3 - RomanToInteger?")
+print("romanToInt('III')? ", romanToInt("III"))
+print("romanToInt('LVIII')? ", romanToInt("LVIII"))
+print("romanToInt('MCMXCIV')? ", romanToInt("MCMXCIV"))
