@@ -295,3 +295,36 @@ print("Problem #10 - 3Sum Closest")
 print("threeSumClosest([-1, 2, 1, -4], 1) →", threeSumClosest([-1, 2, 1, -4], 1))
 print("threeSumClosest([0, 0, 0], 1) →", threeSumClosest([0, 0, 0], 1))
 print("threeSumClosest([1, 1, 1, 1], 3) →", threeSumClosest([1, 1, 1, 1], 3))
+
+def letterCombinations(digits: str) -> List[str]:
+    if not digits:
+        return []
+    
+    phone_map = {
+        "2": "abc",
+        "3": "def",
+        "4": "ghi",
+        "5": "jkl",
+        "6": "mno",
+        "7": "pqrs",
+        "8": "tuv",
+        "9": "wxyz"
+    }
+    
+    res = []
+    
+    def backtrack(index: int, path: str):
+        if index == len(digits):
+            res.append(path)
+            return
+        for letter in phone_map[digits[index]]:
+            backtrack(index + 1, path + letter)
+    
+    backtrack(0, "")
+    return res
+
+
+print("Problem #11 - Letter Combinations of a Phone Number")
+print("letterCombinations('23') →", letterCombinations("23"))
+print("letterCombinations('7') →", letterCombinations("7"))
+print("letterCombinations('') →", letterCombinations(""))
