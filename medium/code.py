@@ -113,3 +113,26 @@ print("convert('PAYPALISHIRING', 4)? ", convert("PAYPALISHIRING", 4))
 print("convert('A', 1)? ", convert("A", 1))
 print("convert('HELLO', 2)? ", convert("HELLO", 2))
 
+def reverse(x: int) -> int:
+    sign = -1 if x < 0 else 1
+    x = abs(x)
+
+    result = 0
+    while x != 0:
+        digit = x % 10
+        x //= 10
+        result = result * 10 + digit
+
+    result *= sign
+
+    if result < -2**31 or result > 2**31 - 1:
+        return 0
+    return result
+
+
+print("Problem #5 - reverse integer")
+print("reverse(123)? ", reverse(123))
+print("reverse(-123)? ", reverse(-123))
+print("reverse(120)? ", reverse(120))
+print("reverse(0)? ", reverse(0))
+print("reverse(1534236469)? ", reverse(1534236469))
