@@ -231,3 +231,39 @@ print("intToRoman(4) →", intToRoman(4))
 print("intToRoman(9) →", intToRoman(9))
 print("intToRoman(58) →", intToRoman(58))
 print("intToRoman(1994) →", intToRoman(1994))
+
+
+def threeSum(nums: List[int]) -> List[List[int]]:
+    nums.sort()   
+    res = []
+    
+    for i in range(len(nums)):
+        if i > 0 and nums[i] == nums[i-1]:
+            continue  
+        
+        left, right = i+1, len(nums)-1
+        while left < right:
+            total = nums[i] + nums[left] + nums[right]
+            
+            if total < 0:
+                left += 1
+            elif total > 0:
+                right -= 1
+            else:
+                res.append([nums[i], nums[left], nums[right]])
+                
+                while left < right and nums[left] == nums[left+1]:
+                    left += 1
+                while left < right and nums[right] == nums[right-1]:
+                    right -= 1
+                
+                left += 1
+                right -= 1
+    
+    return res
+
+
+print("Problem #9 - 3Sum")
+print("threeSum([-1, 0, 1, 2, -1, -4]) →", threeSum([-1, 0, 1, 2, -1, -4]))
+print("threeSum([0, 1, 1]) →", threeSum([0, 1, 1]))
+print("threeSum([0, 0, 0]) →", threeSum([0, 0, 0]))
