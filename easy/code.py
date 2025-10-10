@@ -275,7 +275,7 @@ def climbStairs(n: int) -> int:
     return second
 
 
-print("Problem #15 - climbStairs?")
+print("Problem #14 - climbStairs?")
 print("climbStairs(2)? ", climbStairs(2))
 print("climbStairs(3)? ", climbStairs(3))
 print("climbStairs(5)? ", climbStairs(5))
