@@ -370,3 +370,26 @@ print("Problem #12 - 4Sum")
 print("fourSum([1, 0, -1, 0, -2, 2], 0) →", fourSum([1, 0, -1, 0, -2, 2], 0))
 print("fourSum([2, 2, 2, 2, 2], 8) →", fourSum([2, 2, 2, 2, 2], 8))
 print("fourSum([-3, -1, 0, 2, 4, 5], 2) →", fourSum([-3, -1, 0, 2, 4, 5], 2))
+
+
+def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+    dummy = ListNode(0, head)
+    first = dummy
+    second = dummy
+
+    for _ in range(n + 1):
+        first = first.next
+
+    while first:
+        first = first.next
+        second = second.next
+
+    second.next = second.next.next
+
+    return dummy.next
+
+
+print("Problem #19 - Remove Nth Node From End of List")
+print("removeNthFromEnd([1, 2, 3, 4, 5], 2) → [1, 2, 3, 5]")
+print("removeNthFromEnd([1], 1) → []")
+print("removeNthFromEnd([1, 2], 1) → [1]")
