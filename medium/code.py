@@ -136,3 +136,40 @@ print("reverse(-123)? ", reverse(-123))
 print("reverse(120)? ", reverse(120))
 print("reverse(0)? ", reverse(0))
 print("reverse(1534236469)? ", reverse(1534236469))
+
+
+def myAtoi(s: str) -> int:
+    s = s.strip()
+
+    if not s:
+        return 0
+
+    sign = 1
+    result = 0
+
+    if s[0] == '-' or s[0] == '+':
+        if s[0] == '-':
+            sign = -1
+        s = s[1:]
+
+    for char in s:
+        if not char.isdigit():
+            break
+        result = result * 10 + int(char)
+
+    result *= sign
+
+    if result < -2**31:
+        return -2**31
+    if result > 2**31 - 1:
+        return 2**31 - 1
+
+    return result
+
+
+print("Problem #6 - String To Integer?")
+print("myAtoi('42')? ", myAtoi("42"))
+print("myAtoi('   -42')? ", myAtoi("   -42"))
+print("myAtoi('4193 with words')? ", myAtoi("4193 with words"))
+print("myAtoi('words and 987')? ", myAtoi("words and 987"))
+print("myAtoi('-91283472332')? ", myAtoi("-91283472332"))
