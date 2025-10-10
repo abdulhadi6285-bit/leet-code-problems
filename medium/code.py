@@ -197,3 +197,37 @@ print("maxArea([1,8,6,2,5,4,8,3,7]) →", maxArea([1,8,6,2,5,4,8,3,7]))
 print("maxArea([1,1]) →", maxArea([1,1]))
 print("maxArea([4,3,2,1,4]) →", maxArea([4,3,2,1,4]))
 print("maxArea([1,2,1]) →", maxArea([1,2,1]))
+
+def intToRoman(num: int) -> str:
+    roman_mapping = {
+        1000: "M",
+        900: "CM",
+        500: "D",
+        400: "CD",
+        100: "C",
+        90: "XC",
+        50: "L",
+        40: "XL",
+        10: "X",
+        9: "IX",
+        5: "V",
+        4: "IV",
+        1: "I"
+    }
+
+    roman_numeral = ""
+
+    for value, symbol in roman_mapping.items():
+        while num >= value:
+            roman_numeral += symbol
+            num -= value
+
+    return roman_numeral
+
+
+print("Problem #8 - Integer to Roman")
+print("intToRoman(3) →", intToRoman(3))
+print("intToRoman(4) →", intToRoman(4))
+print("intToRoman(9) →", intToRoman(9))
+print("intToRoman(58) →", intToRoman(58))
+print("intToRoman(1994) →", intToRoman(1994))
