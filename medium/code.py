@@ -87,3 +87,29 @@ print("longestPalindrome('cbbd')? ", longestPalindrome("cbbd"))
 print("longestPalindrome('a')? ", longestPalindrome("a"))
 print("longestPalindrome('ac')? ", longestPalindrome("ac"))
 print("longestPalindrome('racecar')? ", longestPalindrome("racecar"))
+
+
+def convert(s: str, numRows: int) -> str:
+    if numRows == 1 or len(s) <= numRows:
+        return s
+
+    result = [''] * numRows
+    index = 0
+    step = 1
+
+    for char in s:
+        result[index] += char
+        if index == 0:
+            step = 1
+        elif index == numRows - 1:
+            step = -1
+        index += step
+    return ''.join(result)
+
+
+print("Problem #4 - ZigZagConversion")
+print("convert('PAYPALISHIRING', 3)? ", convert("PAYPALISHIRING", 3))
+print("convert('PAYPALISHIRING', 4)? ", convert("PAYPALISHIRING", 4))
+print("convert('A', 1)? ", convert("A", 1))
+print("convert('HELLO', 2)? ", convert("HELLO", 2))
+
