@@ -31,6 +31,27 @@ def addTwoNumbers(l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[Li
     return res.next
 
 
-print("Problem #16 - addTwoNumbers?")
+print("Problem 1 - addTwoNumbers?")
 print("addTwoNumbers([2,4,3], [5,6,4])? → [7,0,8]")
 print("addTwoNumbers([9,9,9,9,9,9,9], [9,9,9,9])? → [8,9,9,9,0,0,0,1]")
+
+def lengthOfLongestSubstring(s: str) -> int:
+    char_set = set()
+    left = 0
+    max_len = 0
+
+    for right in range(len(s)):
+        while s[right] in char_set:
+            char_set.remove(s[left])
+            left += 1
+        char_set.add(s[right])
+        max_len = max(max_len, right - left + 1)
+
+    return max_len
+
+
+print("Problem #2 - LengthOfLongestSubstring")
+print("lengthOfLongestSubstring('abcabcbb')? ", lengthOfLongestSubstring("abcabcbb"))
+print("lengthOfLongestSubstring('bbbbb')? ", lengthOfLongestSubstring("bbbbb"))
+print("lengthOfLongestSubstring('pwwkew')? ", lengthOfLongestSubstring("pwwkew"))
+print("lengthOfLongestSubstring('dvdf')? ", lengthOfLongestSubstring("dvdf"))
