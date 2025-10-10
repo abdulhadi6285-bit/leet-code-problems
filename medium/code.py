@@ -389,7 +389,27 @@ def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNod
     return dummy.next
 
 
-print("Problem #19 - Remove Nth Node From End of List")
+print("Problem #13 - Remove Nth Node From End of List")
 print("removeNthFromEnd([1, 2, 3, 4, 5], 2) → [1, 2, 3, 5]")
 print("removeNthFromEnd([1], 1) → []")
 print("removeNthFromEnd([1, 2], 1) → [1]")
+
+def generateParenthesis(self, n: int) -> List[str]:
+    def backtrack(str, open, closed):
+        if len(str) == 2 * n:
+            outputList.append(str)
+            return
+
+        if open < n:
+            backtrack(str + '(', open + 1, closed)
+        if closed < open:
+            backtrack(str + ')', open, closed + 1)
+    outputList = []
+    backtrack('', 0, 0)
+    return outputList
+
+
+print("Problem #14 - Generate Parentheses")
+print("generateParenthesis(3) → ['((()))', '(()())', '(())()', '()(())', '()()()']")
+print("generateParenthesis(1) → ['()']")
+print("generateParenthesis(2) → ['(())', '()()']")
