@@ -1,5 +1,5 @@
 from typing import Optional
-
+from typing import List
 
 class ListNode:
     def __init__(self, val=0, next=None):
@@ -173,3 +173,27 @@ print("myAtoi('   -42')? ", myAtoi("   -42"))
 print("myAtoi('4193 with words')? ", myAtoi("4193 with words"))
 print("myAtoi('words and 987')? ", myAtoi("words and 987"))
 print("myAtoi('-91283472332')? ", myAtoi("-91283472332"))
+
+
+def maxArea(height: List[int]) -> int:
+    left = 0
+    right = len(height) - 1
+    max_area = 0
+
+    while left < right:
+        area = min(height[left], height[right]) * (right - left)
+        max_area = max(max_area, area)
+
+        if height[left] < height[right]:
+            left += 1
+        else:
+            right -= 1
+
+    return max_area
+
+
+print("Problem #7 - Container With Most Water")
+print("maxArea([1,8,6,2,5,4,8,3,7]) →", maxArea([1,8,6,2,5,4,8,3,7]))
+print("maxArea([1,1]) →", maxArea([1,1]))
+print("maxArea([4,3,2,1,4]) →", maxArea([4,3,2,1,4]))
+print("maxArea([1,2,1]) →", maxArea([1,2,1]))
