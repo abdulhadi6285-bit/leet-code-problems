@@ -267,3 +267,31 @@ print("Problem #9 - 3Sum")
 print("threeSum([-1, 0, 1, 2, -1, -4]) →", threeSum([-1, 0, 1, 2, -1, -4]))
 print("threeSum([0, 1, 1]) →", threeSum([0, 1, 1]))
 print("threeSum([0, 0, 0]) →", threeSum([0, 0, 0]))
+
+def threeSumClosest(nums: List[int], target: int) -> int:
+    nums.sort()
+    closest_sum = float('inf') 
+    
+    for i in range(len(nums) - 2):
+        left, right = i + 1, len(nums) - 1
+        
+        while left < right:
+            current_sum = nums[i] + nums[left] + nums[right]
+
+            if abs(target - current_sum) < abs(target - closest_sum):
+                closest_sum = current_sum
+
+            if current_sum < target:
+                left += 1
+            elif current_sum > target:
+                right -= 1
+            else:
+                return current_sum
+    
+    return closest_sum
+
+
+print("Problem #10 - 3Sum Closest")
+print("threeSumClosest([-1, 2, 1, -4], 1) →", threeSumClosest([-1, 2, 1, -4], 1))
+print("threeSumClosest([0, 0, 0], 1) →", threeSumClosest([0, 0, 0], 1))
+print("threeSumClosest([1, 1, 1, 1], 3) →", threeSumClosest([1, 1, 1, 1], 3))
