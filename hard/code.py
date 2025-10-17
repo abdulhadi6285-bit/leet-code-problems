@@ -255,3 +255,31 @@ print("Problem #7 - First Missing Positive")
 print("firstMissingPositive([1, 2, 0]) →", firstMissingPositive([1, 2, 0]))
 print("firstMissingPositive([3, 4, -1, 1]) →", firstMissingPositive([3, 4, -1, 1]))
 print("firstMissingPositive([7, 8, 9, 11, 12]) →", firstMissingPositive([7, 8, 9, 11, 12]))
+
+
+def isMatch(s: str, p: str) -> bool:
+    m, n = len(s), len(p)
+    
+    dp = [[False] * (n + 1) for _ in range(m + 1)]
+    dp[0][0] = True  
+    
+    for j in range(1, n + 1):
+        if p[j - 1] == '*':
+            dp[0][j] = dp[0][j - 1]
+    
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
+            if p[j - 1] == s[i - 1] or p[j - 1] == '?':
+                dp[i][j] = dp[i - 1][j - 1]
+            elif p[j - 1] == '*':
+                dp[i][j] = dp[i][j - 1] or dp[i - 1][j]
+    
+    return dp[m][n]
+
+
+print("Problem #8 - Wildcard Matching")
+print("isMatch('aa', 'a') →", isMatch('aa', 'a'))
+print("isMatch('aa', '*') →", isMatch('aa', '*'))
+print("isMatch('cb', '?a') →", isMatch('cb', '?a'))
+print("isMatch('adceb', '*a*b') →", isMatch('adceb', '*a*b'))
+print("isMatch('acdcb', 'a*c?b') →", isMatch('acdcb', 'a*c?b'))
