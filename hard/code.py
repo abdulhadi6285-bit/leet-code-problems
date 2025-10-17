@@ -150,3 +150,25 @@ def findSubstring(s: str, words: List[str]) -> List[int]:
 
 print("Problem #4 - Substring with Concatenation of All Words")
 print("findSubstring('barfoothefoobarman', ['foo','bar']) → [0,9]")
+
+
+def longestValidParentheses(s: str) -> int:
+    stack = [-1] 
+    longest = 0
+
+    for i in range(len(s)):
+        if s[i] == '(':
+            stack.append(i)
+        else:
+            stack.pop()
+            if not stack:
+                stack.append(i)
+            else:
+                longest = max(longest, i - stack[-1])
+    return longest
+
+
+print("Problem #5 - Longest Valid Parentheses")
+print("longestValidParentheses('(()') → 2")
+print("longestValidParentheses(')()())') → 4")
+print("longestValidParentheses('') → 0")
