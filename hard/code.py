@@ -317,3 +317,26 @@ def solveNQueens(n: int) -> List[List[str]]:
 print("Problem #9 - N-Queens")
 print("solveNQueens(4) →", solveNQueens(4))
 print("solveNQueens(1) →", solveNQueens(1))
+
+
+from math import factorial
+
+def getPermutation(n: int, k: int) -> str:
+    nums = [str(i) for i in range(1, n + 1)]
+    k -= 1  
+    result = ""
+    
+    for i in range(n, 0, -1):
+        fact = factorial(i - 1)
+        index = k // fact
+        result += nums[index]
+        nums.pop(index)
+        k %= fact
+    
+    return result
+
+
+print("Problem #10 - Permutation Sequence")
+print("getPermutation(3, 3) →", getPermutation(3, 3))
+print("getPermutation(4, 9) →", getPermutation(4, 9))
+print("getPermutation(3, 1) →", getPermutation(3, 1))
