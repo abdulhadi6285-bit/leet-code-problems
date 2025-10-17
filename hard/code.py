@@ -172,3 +172,64 @@ print("Problem #5 - Longest Valid Parentheses")
 print("longestValidParentheses('(()') → 2")
 print("longestValidParentheses(')()())') → 4")
 print("longestValidParentheses('') → 0")
+
+
+
+def solveSudoku(board: List[List[str]]) -> None:
+    rows = [set() for _ in range(9)]
+    cols = [set() for _ in range(9)]
+    boxes = [set() for _ in range(9)]
+    empty = []
+
+    for r in range(9):
+        for c in range(9):
+            val = board[r][c]
+            if val == '.':
+                empty.append((r, c))
+            else:
+                rows[r].add(val)
+                cols[c].add(val)
+                boxes[(r // 3) * 3 + (c // 3)].add(val)
+
+    def backtrack(i=0):
+        if i == len(empty):
+            return True
+
+        r, c = empty[i]
+        box_idx = (r // 3) * 3 + (c // 3)
+
+        for num in map(str, range(1, 10)):
+            if num not in rows[r] and num not in cols[c] and num not in boxes[box_idx]:
+                board[r][c] = num
+                rows[r].add(num)
+                cols[c].add(num)
+                boxes[box_idx].add(num)
+
+                if backtrack(i + 1):
+                    return True
+
+                board[r][c] = '.'
+                rows[r].remove(num)
+                cols[c].remove(num)
+                boxes[box_idx].remove(num)
+
+        return False
+
+    backtrack()
+
+
+print("Problem #6 - Sudoku Solver")
+board = [
+    ["5","3",".",".","7",".",".",".","."],
+    ["6",".",".","1","9","5",".",".","."],
+    [".","9","8",".",".",".",".","6","."],
+    ["8",".",".",".","6",".",".",".","3"],
+    ["4",".",".","8",".","3",".",".","1"],
+    ["7",".",".",".","2",".",".",".","6"],
+    [".","6",".",".",".",".","2","8","."],
+    [".",".",".","4","1","9",".",".","5"],
+    [".",".",".",".","8",".",".","7","9"]
+]
+solveSudoku(board)
+for row in board:
+    print(row)
