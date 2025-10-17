@@ -106,3 +106,47 @@ def reverseKGroup(head: Optional[ListNode], k: int) -> Optional[ListNode]:
 
 print("Problem #3 - Reverse Nodes in k-Group")
 print("reverseKGroup([1,2,3,4,5], 2) → [2,1,4,3,5]")
+
+
+from collections import Counter
+from typing import List
+
+def findSubstring(s: str, words: List[str]) -> List[int]:
+    if not s or not words:
+        return []
+    
+    word_len = len(words[0])
+    total_len = word_len * len(words)
+    word_count = Counter(words)
+    n = len(s)
+    result = []
+
+    for i in range(word_len):
+        left = i
+        seen = Counter()
+        count = 0
+
+        for right in range(i, n - word_len + 1, word_len):
+            word = s[right:right + word_len]
+            if word in word_count:
+                seen[word] += 1
+                count += 1
+
+                while seen[word] > word_count[word]:
+                    left_word = s[left:left + word_len]
+                    seen[left_word] -= 1
+                    left += word_len
+                    count -= 1
+
+                if count == len(words):
+                    result.append(left)
+            else:
+                seen.clear()
+                count = 0
+                left = right + word_len
+
+    return result
+
+
+print("Problem #4 - Substring with Concatenation of All Words")
+print("findSubstring('barfoothefoobarman', ['foo','bar']) → [0,9]")
