@@ -55,3 +55,54 @@ def mergeKLists(lists: List[Optional[ListNode]]) -> Optional[ListNode]:
 
 print("Problem #2 - Merge k Sorted Lists")
 print("mergeKLists([[1,4,5],[1,3,4],[2,6]]) → [1,1,2,3,4,4,5,6]")
+
+from typing import Optional
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+def reverseKGroup(head: Optional[ListNode], k: int) -> Optional[ListNode]:
+
+    def get_length(node):
+        length = 0
+        while node:
+            node = node.next
+            length += 1
+        return length
+
+    def reverse(start, k):
+        prev = None
+        curr = start
+        while k > 0:
+            nxt = curr.next
+            curr.next = prev
+            prev = curr
+            curr = nxt
+            k -= 1
+        return prev
+
+    total_len = get_length(head)
+    dummy = ListNode(0)
+    dummy.next = head
+    prev_group = dummy
+    curr = head
+
+    while total_len >= k:
+        group_start = curr
+
+        for _ in range(k):
+            curr = curr.next
+
+        new_head = reverse(group_start, k)
+        prev_group.next = new_head
+        group_start.next = curr
+        prev_group = group_start
+        total_len -= k
+
+    return dummy.next
+
+
+print("Problem #3 - Reverse Nodes in k-Group")
+print("reverseKGroup([1,2,3,4,5], 2) → [2,1,4,3,5]")
